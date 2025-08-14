@@ -18,14 +18,12 @@ function point(btn) {
     btn.disabled = true;
     emptyboxes--;
     playerpoints.push(btn.id);
-    //console.log(playerpoints);
     opponent();
     victory();
 }
 
 function reset() {
     const btns = document.querySelectorAll("button");
-    //console.log("reset");
     for(i = 0, length = btns.length; i < length; i++) {
         btns[i].style.backgroundImage = "";
         btns[i].disabled = false;
@@ -38,40 +36,30 @@ function reset() {
 function missing(points, counterLimit) {
     const btns = document.querySelectorAll("button");
     let btn;
-    //if(points.length >= 1) {
-        for(i = 0, n = win.length; i < n; i++) {
-            let counter = 0;
-            for(j = 0; j < win[i].length; j++) {
-                console.log("b");
-                if(counter == counterLimit && !points.includes(win[i][j])) {
-                    btn = document.getElementById(win[i][j]);
-                    if(btn.disabled == false) {
-                        return win[i][j];
-                    } else {
-                        continue;
-                    }
+    for(i = 0, n = win.length; i < n; i++) {
+        let counter = 0;
+        for(j = 0; j < win[i].length; j++) {
+            console.log("b");
+            if(counter == counterLimit && !points.includes(win[i][j])) {
+                btn = document.getElementById(win[i][j]);
+                if(btn.disabled == false) {
+                    return win[i][j];
+                } else {
+                    continue;
                 }
-                if(counter < counterLimit && points.includes(win[i][j])) {
-                    counter++;
-                    if(counter == counterLimit) {
-                        j = -1;
-                    }
+            }
+            if(counter < counterLimit && points.includes(win[i][j])) {
+                counter++;
+                if(counter == counterLimit) {
+                    j = -1;
                 }
             }
         }
-        return null;
-    //}
+    }
+    return null;
 }
 
 function opponent() {
-    /*
-    Problema con questo while, dovrebbe esserci
-    in quanto si assicura che la CPU non cerchi
-    di fare punti se non ci sono le caselle, ma quando
-    è attivo, e il giocatore ha fatto almeno 2 punti,
-    per qualche motivo la casella non viene disattivata
-    nonostante btn riceva il valore corretto di missing()
-    */
     let btn;
     if(playerpoints.length == 1) {
         valore = "btn" + (Math.floor(Math.random() * 9) + 1);
@@ -95,7 +83,6 @@ function victory() {
         let counterp = 0;
         let countero = 0;
         for(j = 0; j < win[i].length; j++) {
-            //console.log(win[i][j]);
             if(playerpoints.includes(win[i][j])) {
                 counterp++;
                 if(counterp == 3) {
@@ -105,10 +92,8 @@ function victory() {
                 } 
             } else if(opponentpoints.includes(win[i][j])) {
                 countero++;
-                //console.log(countero);
                 if(countero == 3) {
                     console.log("opponent wins");
-                    //reset();
                     return;
                 }
             }
