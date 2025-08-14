@@ -1,0 +1,51 @@
+main {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+section {
+    height: 80%;
+    width: 30%;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    gap: 1px;
+}
+
+/*#griglia > div {
+    height: 100px;
+    width: 100px;
+}*/
+
+.box {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    height: 90%;
+    width: 90%;
+    background-color: transparent;
+    border: none;
+}
+
+.side {
+    border-bottom: 1px solid black;
+}
+
+.middle {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.middle:nth-of-type(8) {
+    border-bottom: none;
+}
