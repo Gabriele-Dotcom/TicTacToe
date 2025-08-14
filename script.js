@@ -94,6 +94,7 @@ function victory() {
                 countero++;
                 if(countero == 3) {
                     console.log("opponent wins");
+                    reset();
                     return;
                 }
             }
