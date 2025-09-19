@@ -3,6 +3,7 @@ main {
     justify-content: center;
     height: 100%;
     width: 100%;
+    background-color: lightgrey;
 }
 
 section {
@@ -15,11 +16,6 @@ section {
     grid-template-columns: 100px 100px 100px;
     gap: 1px;
 }
-
-/*#griglia > div {
-    height: 100px;
-    width: 100px;
-}*/
 
 .box {
     height: 100px;
@@ -48,4 +44,11 @@ button {
 
 .middle:nth-of-type(8) {
     border-bottom: none;
+}
+
+footer {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

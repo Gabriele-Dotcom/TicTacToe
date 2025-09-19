@@ -36,36 +36,35 @@ function reset() {
 function missing(points, counterLimit) {
     const btns = document.querySelectorAll("button");
     let btn;
-    //if(points.length >= 1) {
-        for(i = 0, n = win.length; i < n; i++) {
-            let counter = 0;
-            for(j = 0; j < win[i].length; j++) {
-                console.log("b");
-                if(counter == counterLimit && !points.includes(win[i][j])) {
-                    btn = document.getElementById(win[i][j]);
-                    if(btn.disabled == false) {
-                        return win[i][j];
-                    } else {
-                        continue;
-                    }
+    for(i = 0, n = win.length; i < n; i++) {
+        let counter = 0;
+        for(j = 0; j < win[i].length; j++) {
+            if(counter == counterLimit && !points.includes(win[i][j])) {
+                btn = document.getElementById(win[i][j]);
+                if(btn.disabled == false) {
+                    return win[i][j];
+                } else {
+                    continue;
                 }
-                if(counter < counterLimit && points.includes(win[i][j])) {
-                    counter++;
-                    if(counter == counterLimit) {
-                        j = -1;
-                    }
+            }
+            if(counter < counterLimit && points.includes(win[i][j])) {
+                counter++;
+                if(counter == counterLimit) {
+                    j = -1;
                 }
             }
         }
-        return null;
-    //}
+    }
+    return null;
 }
 
 function opponent() {
     let btn;
     if(playerpoints.length == 1) {
-        valore = "btn" + (Math.floor(Math.random() * 9) + 1);
-        btn = document.getElementById(valore);
+        do {
+            valore = "btn" + (Math.floor(Math.random() * 9) + 1);
+            btn = document.getElementById(valore);
+        } while (valore == playerpoints[0]);
     } else if(emptyboxes >= 1) {
         btn = document.getElementById(missing(playerpoints, 2));
         if(btn == null) {
@@ -87,19 +86,17 @@ function victory() {
         let counterp = 0;
         let countero = 0;
         for(j = 0; j < win[i].length; j++) {
-            //console.log(win[i][j]);
             if(playerpoints.includes(win[i][j])) {
                 counterp++;
                 if(counterp == 3) {
-                    console.log("player wins");
+                    alert("player wins");
                     reset();
                     return;
                 } 
             } else if(opponentpoints.includes(win[i][j])) {
                 countero++;
-                //console.log(countero);
                 if(countero == 3) {
-                    console.log("opponent wins");
+                    alert("opponent wins");
                     reset();
                     return;
                 }
@@ -107,7 +104,7 @@ function victory() {
         }
     }
     if(emptyboxes == 0) {
-        console.log("draw");
+        alert("draw");
         reset();
         return;
     }
